@@ -5,8 +5,10 @@ import router from './router'
 import App from './App.vue'
 import { addDateRange,filterType } from "@/utils/common";
 import { parseTime } from "@/utils/index";
+import less from 'less'
 
 Vue.use(ElementUI);
+Vue.use(less)
 
 Vue.prototype.addDateRange = addDateRange
 Vue.prototype.parseTime = parseTime

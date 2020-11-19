@@ -7,11 +7,243 @@
           <span>学件基础信息</span>
         </div>
         <div style="margin-bottom: 50px">
-          <el-form :model="formData" label-width="80px" size="medium">
+          <el-form :model="formData" label-width="120px" size="medium">
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="学件名称：">
+                  <el-input
+                    v-model="formData.xuejianName"
+                    disabled
+                    style="
+                       {
+                        width: '50%';
+                      }
+                    "
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="10">
+                <el-form-item
+                  label="对象类型："
+                  label-width="120px"
+                  size="medium"
+                >
+                  <el-select
+                    disabled
+                    v-model="formData.objectValue"
+                    placeholder="请选择"
+                    :style="{ width: '100%' }"
+                  >
+                    <el-option
+                      v-for="item in objectOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="10">
+                <el-form-item
+                  label="数据粒度："
+                  label-width="120px"
+                  size="medium"
+                >
+                  <el-select
+                    disabled
+                    v-model="formData.shujulidu"
+                    placeholder="请选择"
+                    :style="{ width: '100%' }"
+                  >
+                    <el-option
+                      v-for="item in objectOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="10">
+                <el-form-item
+                  label="指标名称(中文)："
+                  label-width="120px"
+                  size="medium"
+                >
+                  <el-input
+                    disabled
+                    v-model="formData.zhibiaoName"
+                    style="
+                       {
+                        width: '50%';
+                      }
+                    "
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="10">
+                <el-form-item
+                  label="指标单位："
+                  label-width="120px"
+                  size="medium"
+                >
+                  <el-input
+                    disabled
+                    v-model="formData.zhibiaodanwei"
+                    style="
+                       {
+                        width: '50%';
+                      }
+                    "
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+
+    <el-row style="margin-top: 20px">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>训练处理数据</span>
+        </div>
+       
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="120px" size="medium">
+            <el-row gutter="40">
+              <el-col :span="10">
+                <el-form-item label="数值有效范围：">
+                  <el-col span="10">
+                    <el-input
+                      disabled
+                      v-model="formData.shuzhirRangStart"
+                      style="
+                         {
+                          width: '400%';
+                        }
+                      "
+                    ></el-input>
+                  </el-col>
+                  <el-col class="line" :span="2">-</el-col>
+                  <el-col span="10">
+                    <el-input
+                      disabled
+                      style="
+                         {
+                          width: '40%';
+                        }
+                      "
+                    ></el-input>
+                  </el-col>
+                </el-form-item>
+              </el-col>
+              <el-col :span="10">
+                <el-form-item
+                  label="为空数据补数策略："
+                  label-width="150px"
+                  size="medium"
+                >
+                         <el-select
+                    disabled
+                    v-model="formData.weikongshuju"
+                    placeholder="请选择"
+                    :style="{ width: '100%' }"
+                  >
+                    <el-option
+                      v-for="item in objectOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="10">
+                <el-form-item
+                  label="重复数据处理策略："
+                  label-width="150px"
+                  size="medium"
+                >
+                  <el-radio disabled v-model="radio" label="1">最大值</el-radio>
+                  <el-radio disabled v-model="radio" label="2">最小值</el-radio>
+                  <el-radio disabled v-model="radio" label="3">平均值</el-radio>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
+      </el-card>
+    
+    </el-row>
+
+    <el-row style="margin-top: 20px">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>模型训练规则</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="120px" size="medium">
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="扩容原则">
+               <el-radio disabled v-model="radio" label="1">就高原则</el-radio>
+                  <el-radio disabled v-model="radio" label="2">就低原则</el-radio>
+                </el-form-item>
+              </el-col>
+              <el-col :span="10">
+                <el-form-item label="同步资源当前配额策略" label-width="160px">
+                 <el-select
+                    disabled
+                    v-model="formData.tongbuyuanze"
+                    placeholder="请选择"
+                    :style="{ width: '100%' }"
+                  >
+                    <el-option
+                      v-for="item in objectOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="10">
+                <el-form-item label="缩容原则" label-width="120px">
+                 <el-radio disabled v-model="radio1" label="1">就高原则</el-radio>
+                  <el-radio disabled v-model="radio1" label="2">就低原则</el-radio>
+                </el-form-item>
+              </el-col>
+
+     
+            </el-row>
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+
+     <el-row style="margin-top: 20px">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>模型训练高度</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="120px" size="medium">
             <el-row gutter="250">
               <el-col :span="10">
                 <el-form-item label="活动名称">
                   <el-input
+                    disabled
                     style="
                        {
                         width: '50%';
@@ -32,13 +264,13 @@
                 </el-form-item>
               </el-col>
 
-                            <el-col :span="10">
-                <el-form-item label="活动名称">
+              <el-col :span="10">
+                <el-form-item label="指标名称(中文)">
                   <el-input></el-input>
                 </el-form-item>
               </el-col>
 
-                            <el-col :span="10">
+              <el-col :span="10">
                 <el-form-item label="活动名称">
                   <el-input></el-input>
                 </el-form-item>
@@ -55,11 +287,30 @@
 export default {
   data() {
     return {
-      input: "",
-      formData: {},
+      formData: {
+        objectValue: "虚拟机",
+        xuejianName: "虚拟机扩缩容",
+        shujulidu: "1分钟",
+        zhibiaoName: "虚机性能",
+        zhibiaodanwei: "",
+        shuzhirRangStart:'0',
+        shuzhirRangEnd:'100',
+        weikongshuju:'取前临近数据',
+        tongbuyuanze:'取近一步同步结果'
+      },
+      objectOptions: {},
+      radio: "1",
+      radio1:'2'
     };
   },
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
+.box-card {
+  max-width: 100%;
+  height: 250px;
+}
+</style>>
+
+
 </style>
