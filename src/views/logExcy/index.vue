@@ -299,25 +299,21 @@ export default {
      .box-card {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 250px;
   }
    .box-card2 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 240px;
   }
    .box-card3 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 180px;
   }
    .box-card4 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 150px;
   }
   .bg-purple {
