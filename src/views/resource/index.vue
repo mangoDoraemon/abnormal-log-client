@@ -1,0 +1,338 @@
+
+<template>
+<div>
+  <!-- 卡片一 -->
+  <div class="app-container">
+    <el-row>
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>学件基础信息</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="80px" size="mini">
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="学件名称:">
+                      <el-input class="box1" placeholder="计算资源优化" :disabled="true"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="10">
+                <el-form-item label="对象类型:">
+                  <el-input
+                  placeholder="租户队列"
+                  v-model="input1"
+                  :disabled="true">
+                  </el-input>
+
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="10">
+                <el-form-item label="数据粒度:">
+                    <el-input
+                  placeholder="1分钟"
+                  v-model="input1"
+                  :disabled="true">
+                  </el-input>
+                </el-form-item>
+              </el-col>
+            <el-col :span="10">
+                <el-form-item label="指标名称(中文):" label-width="120px" >
+                  <el-input class="box1" :disabled="true" placeholder="租户资源"></el-input>
+                </el-form-item>
+              </el-col>
+
+                            <el-col :span="10">
+                <el-form-item label="指标单位:">
+                   <el-input class="box1" :disabled="true"></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+  </div>
+
+<!-- 卡片二 -->
+<div>
+<el-row>
+      <el-card class="box-card2">
+        <div slot="header" class="clearfix">
+          <span>训练数据处理</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="80px" size="mini" >
+            <el-row gutter="20">
+              <el-col :span="5">
+                <el-form-item label="数据保留小数位数:" label-width="160px">
+                  <el-input class="box1" :disabled="true" placeholder="3位"></el-input>
+                </el-form-item>
+              </el-col>
+             
+              <el-col :span="10" style="margin-left: 300px">
+               <el-form-item label="CPU使用率" label-width="100px">
+                <el-row :gutter="6">
+                  <el-col span="10">
+                    <el-input
+                      disabled
+                      v-model="formData.shuzhirRangStart"
+                      style="
+                         {
+                          width: '400%';
+                        }
+                      "
+                    placeholder="CPU使用量"></el-input>
+                  </el-col>
+                  <el-col class="line" :span="3">/</el-col>
+                  <el-col span="10">
+                    <el-input
+                      disabled
+                      style="
+                         {
+                          width: '40%';
+                        }
+                      "
+                    placeholder="CPU配额"></el-input>
+                  </el-col></el-row>
+                </el-form-item>
+              </el-col>
+         
+              <el-col :span="10">
+                <el-form-item label="重复数据处理策略:" label-width="160px">
+                  <div>
+                   <el-radio v-model="radio" label="1">最大值</el-radio>
+                  <el-radio v-model="radio" label="2">最小值</el-radio>
+                  <el-radio v-model="radio" label="3">平均值</el-radio>
+                  </div>
+                </el-form-item>
+              </el-col>
+                <el-col style="margin-left: 15px" :span="10">
+                <el-form-item label="内存使用率" label-width="100px">
+                    <el-row :gutter="6">
+                  <el-col span="10">
+                    <el-input
+                      disabled
+                      v-model="formData.shuzhirRangStart"
+                      style="
+                         {
+                          width: '400%';
+                        }
+                      "
+                    placeholder="内存使用量"></el-input>
+                  </el-col>
+                  <el-col class="line" :span="3">/</el-col>
+                  <el-col span="10">
+                    <el-input
+                      disabled
+                      style="
+                         {
+                          width: '40%';
+                        }
+                      "
+                    placeholder="CPU配额"></el-input>
+                  </el-col>
+                  </el-row>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+  </div>
+  <!-- 卡片三 -->
+<div>
+<el-row>
+      <el-card class="box-card3">
+        <div slot="header" class="clearfix">
+          <span>模型训练规则</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="80px" size="mini" >
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="资源使用率阈值低限:" label-width="160px">
+                  <el-input class="box1" :disabled="true" placeholder="30">
+                    <template slot="append">%</template>
+                  </el-input>
+                </el-form-item>
+              </el-col>
+            
+              <el-col :span="9">
+                <el-form-item label="资源回收的超限占比:" label-width="160px" placeholder="80">
+                   <el-input class="box1" :disabled="true">
+                      <template slot="append">%</template>
+                   </el-input>
+                   <!-- <el-input class="box2" :inline="true"></el-input> -->
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="滑动时间窗口大小:" label-width="160px">
+                 <el-input class="box1" :disabled="true" placeholder="1">
+                    <template slot="append">天</template>
+                 </el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+  </div>
+
+  <!-- 卡片四 -->
+<div>
+<el-row>
+      <el-card class="box-card4">
+        <div slot="header" class="clearfix">
+          <span>模型训练调度</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="80px" size="mini" >
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="执行周期:" label-width="100px">
+                  <div>
+                   <el-radio v-model="radio" label="1">小时</el-radio>
+                  <el-radio v-model="radio" label="2">日</el-radio>
+                  <el-radio v-model="radio" label="3">周</el-radio>
+                  <el-radio v-model="radio" label="4">月</el-radio>
+                  </div>
+                </el-form-item>
+              </el-col>
+            
+              <el-col :span="10">
+                <el-form-item label="每周">
+                    <el-row :gutter="6">
+                  <el-col span="10">
+                    <el-input
+                    
+                      disabled
+                      v-model="formData.shuzhirRangStart"
+                      style="
+                         {
+                          width: '400%';
+                        }
+                      "
+                    placeholder="周一"> </el-input>
+                  </el-col>
+                  <el-col class="line" :span="3">    </el-col>
+                  <el-col span="10">
+                    <el-input
+                    suffix-icon="el-icon-date"
+                      disabled
+                      style="
+                         {
+                          width: '40%';
+                        }
+                      "
+                    ></el-input>
+                  </el-col></el-row>
+                </el-form-item>
+              </el-col>
+            </el-row>
+           
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+  </div>
+
+  </div>
+ 
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      input: "",
+      formData: {},
+      cities: [{
+          value: '1',
+          label: '0.5分钟'
+        }, {
+          value: '2',
+          label: '1分钟'
+        }, {
+          value: '3',
+          label: '2分钟'
+        }, {
+          value: '4',
+          label: '5分钟'
+        }, {
+          value: '5',
+          label: '10分钟'
+        }, {
+          value: '6',
+          label: '15分钟'
+        },
+        {
+          value: '7',
+          label: '30分钟'
+        },{
+          value: '8',
+          label: '1小时'
+        },{
+          value: '9',
+          label: '1天'
+        }],
+        value6: '',
+        radio: '1'
+    };
+  },
+};
+</script>
+<style scoped>
+    .box1{
+         width: '50%';
+        
+    }
+    .box2{
+        width: '25%';  
+       float: left;
+    }
+
+     .box-card {
+    border-width: 0px;
+    margin-bottom: 10px;
+    width: 1384px;
+    height: 250px;
+  }
+   .box-card2 {
+    border-width: 0px;
+    margin-bottom: 10px;
+    width: 1384px;
+    height: 180px;
+  }
+   .box-card3 {
+    border-width: 0px;
+    margin-bottom: 10px;
+    width: 1384px;
+    height: 180px;
+  }
+   .box-card4 {
+    border-width: 0px;
+    margin-bottom: 10px;
+    width: 1384px;
+    height: 180px;
+  }
+  .bg-purple {
+    background: #feffff;
+  }
+  .bg-purple-light {
+    background: #f8f9fc;
+  }
+  .grid-content {
+    width: 100px;
+  }
+  .box5{
+    position: relative;
+    left: 280px;
+     top: -2px;
+  }
+</style>

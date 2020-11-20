@@ -18,6 +18,11 @@ let router =  new Router({
             path:'/virtualMachine',
             name :'index',
             component: () => import('@/views/virtualMachine/index'),
+        },
+        {
+            path:'/resource',
+            name :'index',
+            component: () => import('@/views/resource/index'),
         }
 
         ]
