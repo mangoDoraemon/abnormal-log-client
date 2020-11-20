@@ -310,31 +310,26 @@ export default {
      .box-card {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 250px;
   }
    .box-card2 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 240px;
   }
    .box-card3 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 160px;
   }
    .box-card4 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 130px;
   }
    .box-card5 {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 130px;
   }
   .bg-purple {
