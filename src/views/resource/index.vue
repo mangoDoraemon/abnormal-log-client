@@ -17,23 +17,32 @@
                 </el-form-item>
               </el-col>
               <el-col :span="10">
-                <el-form-item label="对象类型:">
-                  <el-input
-                  placeholder="租户队列"
-                  v-model="input1"
-                  :disabled="true">
-                  </el-input>
-
+                <el-form-item label="对象类型:"  label-width="80px">
+                   <el-select v-model="value" placeholder="请选择" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="租户队列"
+                       
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                 </el-form-item>
               </el-col>
 
               <el-col :span="10">
                 <el-form-item label="数据粒度:">
-                    <el-input
-                  placeholder="1分钟"
-                  v-model="input1"
-                  :disabled="true">
-                  </el-input>
+                    <el-select v-model="value" placeholder="1分钟" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="1分钟"
+                       
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                 </el-form-item>
               </el-col>
             <el-col :span="10">
@@ -66,7 +75,20 @@
             <el-row gutter="20">
               <el-col :span="5">
                 <el-form-item label="数据保留小数位数:" label-width="160px">
-                  <el-input class="box1" :disabled="true" placeholder="3位"></el-input>
+                    <el-select
+                    disabled
+                    v-model="formData.objectValue"
+                    placeholder="3位"
+                    :style="{ width: '100%' }"
+                  >
+                    <el-option
+                      v-for="item in objectOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                 </el-form-item>
               </el-col>
              
@@ -74,26 +96,27 @@
                <el-form-item label="CPU使用率" label-width="100px">
                 <el-row :gutter="6">
                   <el-col span="10">
-                    <el-input
-                      disabled
-                      v-model="formData.shuzhirRangStart"
-                      style="
-                         {
-                          width: '400%';
-                        }
-                      "
-                    placeholder="CPU使用量"></el-input>
+                   <el-select v-model="value" placeholder="CPU使用量" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="CPU使用量"
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col>
-                  <el-col class="line" :span="3">/</el-col>
+                  <el-col class="line" :span="1">/</el-col>
                   <el-col span="10">
-                    <el-input
-                      disabled
-                      style="
-                         {
-                          width: '40%';
-                        }
-                      "
-                    placeholder="CPU配额"></el-input>
+                    <el-select v-model="value" placeholder="CPU配额" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="CPU配额"
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col></el-row>
                 </el-form-item>
               </el-col>
@@ -101,9 +124,9 @@
               <el-col :span="10">
                 <el-form-item label="重复数据处理策略:" label-width="160px">
                   <div>
-                   <el-radio v-model="radio" label="1">最大值</el-radio>
-                  <el-radio v-model="radio" label="2">最小值</el-radio>
-                  <el-radio v-model="radio" label="3">平均值</el-radio>
+                   <el-radio v-model="radio" label="1" :disabled="true">最大值</el-radio>
+                  <el-radio v-model="radio" label="2" :disabled="true">最小值</el-radio>
+                  <el-radio v-model="radio" label="3" :disabled="true">平均值</el-radio>
                   </div>
                 </el-form-item>
               </el-col>
@@ -111,26 +134,27 @@
                 <el-form-item label="内存使用率" label-width="100px">
                     <el-row :gutter="6">
                   <el-col span="10">
-                    <el-input
-                      disabled
-                      v-model="formData.shuzhirRangStart"
-                      style="
-                         {
-                          width: '400%';
-                        }
-                      "
-                    placeholder="内存使用量"></el-input>
+                   <el-select v-model="value" placeholder="内存使用量" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="内存使用量"
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col>
-                  <el-col class="line" :span="3">/</el-col>
+                  <el-col class="line" :span="1">/</el-col>
                   <el-col span="10">
-                    <el-input
-                      disabled
-                      style="
-                         {
-                          width: '40%';
-                        }
-                      "
-                    placeholder="CPU配额"></el-input>
+                    <el-select v-model="value"  placeholder="CPU配额" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="CPU配额"
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col>
                   </el-row>
                 </el-form-item>
@@ -197,10 +221,10 @@
               <el-col :span="10">
                 <el-form-item label="执行周期:" label-width="100px">
                   <div>
-                   <el-radio v-model="radio" label="1">小时</el-radio>
-                  <el-radio v-model="radio" label="2">日</el-radio>
-                  <el-radio v-model="radio" label="3">周</el-radio>
-                  <el-radio v-model="radio" label="4">月</el-radio>
+                   <el-radio v-model="radio" label="1" :disabled="true">小时</el-radio>
+                  <el-radio v-model="radio" label="2" :disabled="true">日</el-radio>
+                  <el-radio v-model="radio" label="3" :disabled="true">周</el-radio>
+                  <el-radio v-model="radio" label="4" :disabled="true">月</el-radio>
                   </div>
                 </el-form-item>
               </el-col>
@@ -208,21 +232,21 @@
               <el-col :span="10">
                 <el-form-item label="每周">
                     <el-row :gutter="6">
-                  <el-col span="10">
-                    <el-input
-                    
-                      disabled
-                      v-model="formData.shuzhirRangStart"
-                      style="
-                         {
-                          width: '400%';
-                        }
-                      "
-                    placeholder="周一"> </el-input>
+                  <el-col span="6">
+                    <el-select v-model="value"  placeholder="周一" :disabled="true"  :style="{ width: '100%' }">
+                      <el-option
+                      placeholder="CPU配额"
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col>
                   <el-col class="line" :span="3">    </el-col>
-                  <el-col span="10">
+                  <el-col span="6">
                     <el-input
+                    placeholder="02:30"
                     suffix-icon="el-icon-date"
                       disabled
                       style="
@@ -319,7 +343,7 @@ export default {
     border-width: 0px;
     margin-bottom: 10px;
     width: 1384px;
-    height: 180px;
+    height: 150px;
   }
   .bg-purple {
     background: #feffff;
