@@ -38,6 +38,12 @@ let router =  new Router({
             path:'/logExcy',
             name :'index',
             component: () => import('@/views/logExcy/index'),
+        },
+        // 告警根因分析
+        {
+            path:'/analysis',
+            name :'index',
+            component: () => import('@/views/analysis/index'),
         }
 
         ]
