@@ -44,6 +44,18 @@ let router =  new Router({
             path:'/analysis',
             name :'index',
             component: () => import('@/views/analysis/index'),
+        },
+        // 知识库
+        {
+            path:'/knowledge',
+            name :'index',
+            component: () => import('@/views/knowledge/index'),
+        },
+        // 智能投诉分析
+        {
+            path:'/complaint',
+            name :'index',
+            component: () => import('@/views/complaint/index'),
         }
 
         ]
