@@ -18,7 +18,7 @@
               </el-col>
               <el-col :span="10">
                 <el-form-item label="对象类型:"  label-width="80px">
-                   <el-select v-model="value" placeholder="请选择" :disabled="true"  :style="{ width: '100%' }">
+                   <el-select v-model="value" placeholder="租户队列" :disabled="true"  :style="{ width: '100%' }">
                       <el-option
                       placeholder="租户队列"
                        
@@ -186,7 +186,7 @@
             
               <el-col :span="9">
                 <el-form-item label="资源回收的超限占比:" label-width="160px" placeholder="80">
-                   <el-input class="box1" :disabled="true">
+                   <el-input class="box1" :disabled="true" placeholder="80">
                       <template slot="append">%</template>
                    </el-input>
                    <!-- <el-input class="box2" :inline="true"></el-input> -->
