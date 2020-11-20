@@ -33,6 +33,11 @@ let router =  new Router({
             path:'/capacity',
             name :'cap',
             component: () => import('@/views/capacity/cap'),
+        },
+        {
+            path:'/logExcy',
+            name :'index',
+            component: () => import('@/views/logExcy/index'),
         }
 
         ]
