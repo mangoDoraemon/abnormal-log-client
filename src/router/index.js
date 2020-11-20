@@ -44,6 +44,11 @@ let router =  new Router({
             path:'/analysis',
             name :'index',
             component: () => import('@/views/analysis/index'),
+        },
+        {
+            path:'/robots',
+            name :'index',
+            component: () => import('@/views/robots/index'),
         }
 
         ]
