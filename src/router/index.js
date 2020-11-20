@@ -23,6 +23,16 @@ let router =  new Router({
             path:'/resource',
             name :'index',
             component: () => import('@/views/resource/index'),
+        },
+        {
+            path:'/optimization',
+            name :'opt',
+            component: () => import('@/views/optimization/opt'),
+        },
+        {
+            path:'/capacity',
+            name :'cap',
+            component: () => import('@/views/capacity/cap'),
         }
 
         ]
