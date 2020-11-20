@@ -193,7 +193,7 @@
 
     <el-row style="margin-top: 20px">
         
-      <el-card class="box-card">
+      <el-card class="box-card-two">
         <div slot="header" class="clearfix">
           <span>模型训练规则</span>
         </div>
@@ -240,7 +240,7 @@
     </el-row>
 
      <el-row style="margin-top: 20px">
-      <el-card class="box-card">
+      <el-card class="box-card-three">
         <div slot="header" class="clearfix">
           <span>模型训练高度</span>
         </div>
@@ -255,23 +255,30 @@
                   <el-radio disabled v-model="radio2" label="4">月</el-radio>
                 </el-form-item>
               </el-col>
-              <el-col :span="5">
+              <el-col :span="8">
                 <el-form-item label="每周">
-                    <el-row :gutter="6">
-                  <el-col span="10">
-                    <el-input
-                      disabled
-                      v-model="formData.shuzhirRangStart"
-                      style="
-                         {
-                          width: '400%';
-                        }
-                      "
-                    ></el-input>
+                    <el-row :gutter="10">
+                  <el-col span="6">
+                       <el-select
+                    disabled
+                    v-model="formData.week"
+                    placeholder="周一"
+                    :style="{ width: '100%' }"
+                  >
+                    <el-option
+                      v-for="item in objectOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
                   </el-col>
-                  <el-col class="line" :span="3">    </el-col>
-                  <el-col span="10">
+                  <el-col class="line" :span="1">    </el-col>
+                  <el-col span="7">
                     <el-input
+                    v-model="formData.time"
+                    suffix-icon="el-icon-date"
                       disabled
                       style="
                          {
@@ -304,7 +311,9 @@ export default {
         shuzhirRangStart:'0',
         shuzhirRangEnd:'100',
         weikongshuju:'取前临近数据',
-        tongbuyuanze:'取近一步同步结果'
+        tongbuyuanze:'取近一步同步结果',
+        time:'01:10',
+        week:'周一'
       },
       objectOptions: {},
       radio: "1",
@@ -320,6 +329,12 @@ export default {
 }
 .box-card-one{
     height: 160px;
+}
+.box-card-two{
+  height: 170px;
+}
+.box-card-three{
+  height: 130px;
 }
 .test{
     color:aliceblue;
