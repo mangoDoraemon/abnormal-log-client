@@ -112,12 +112,66 @@
       
     </el-row>
 
+    <!--    新增训练数据接入-->
+    <el-row style="margin-top: 20px">
+      <el-card class="box-card-four">
+        <div slot="header" class="clearfix">
+          <span>训练数据接入</span>
+        </div>
+        <div style="margin-bottom: 50px">
+          <el-form :model="formData" label-width="120px" size="medium">
+
+            <el-row gutter="250">
+              <el-col :span="10">
+                <el-form-item label="数据源库名:" label-width="100px">
+                  <el-select
+                          size="mini"
+                          disabled
+                          v-model="formData.kuming"
+                          placeholder="请选择"
+                          :style="{ width: '50%' }"
+                  >
+                    <el-option
+                            v-for="item in objectOptions"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                    >
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="8">
+                <el-form-item label="数据源表名" label-width="100px">
+                  <el-input size="mini" class="box1" :disabled="true" v-model="formData.biaoming"></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row gutter="50">
+              <el-col :span="10">
+                <el-form-item label="数据提取SQL:" label-width="100px">
+                  <el-input
+                          disabled
+                          type="textarea"
+                          autosize
+                          placeholder="请输入内容"
+                          v-model="formData.sql">
+                  </el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
+      </el-card>
+    </el-row>
+
     <el-row style="margin-top: 20px">
       <el-card class="box-card-one">
         <div slot="header" class="clearfix">
           <span>训练处理数据</span>
         </div>
-       
+
         <div style="margin-bottom: 50px">
           <el-form :model="formData" label-width="120px" size="mini">
             <el-row gutter="40">
@@ -188,11 +242,11 @@
           </el-form>
         </div>
       </el-card>
-    
+
     </el-row>
 
     <el-row style="margin-top: 20px">
-        
+
       <el-card class="box-card-two">
         <div slot="header" class="clearfix">
           <span>模型训练规则</span>
@@ -232,7 +286,7 @@
                 </el-form-item>
               </el-col>
 
-     
+
             </el-row>
           </el-form>
         </div>
@@ -288,7 +342,7 @@
                     ></el-input>
                   </el-col></el-row>
                 </el-form-item>
-          
+
               </el-col>
             </el-row>
           </el-form>
@@ -313,7 +367,11 @@ export default {
         weikongshuju:'取前临近数据',
         tongbuyuanze:'取近一步同步结果',
         time:'01:10',
-        week:'周一'
+        week:'周一',
+        biaoming:"os",
+        kuming:"zhyypt_hive_db",
+        sql:"select metric_name,ip,metric_value,gath_time from zhyypt_hive_db.os where" +
+                " metric_name in('Memory_used_pct','CPU_pused')"
       },
       objectOptions: {},
       radio: "1",
@@ -335,6 +393,9 @@ export default {
 }
 .box-card-three{
   height: 130px;
+}
+.box-card-four{
+  height: 220px;
 }
 .test{
     color:aliceblue;

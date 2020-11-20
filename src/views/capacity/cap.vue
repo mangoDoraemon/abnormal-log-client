@@ -59,7 +59,60 @@
         </div>
       </el-card>
     </el-row>
-    <el-row style="margin-top: 20px">
+      <el-row style="margin-top: 20px">
+          <el-card class="box-card-four">
+              <div slot="header" class="clearfix">
+                  <span>训练数据接入</span>
+              </div>
+              <div style="margin-bottom: 50px">
+                  <el-form :model="formData" label-width="120px" size="medium">
+
+                      <el-row gutter="250">
+                          <el-col :span="10">
+                              <el-form-item label="数据源库名:" label-width="100px">
+                                  <el-select
+                                          size="mini"
+                                          disabled
+                                          v-model="formData.kuming"
+                                          placeholder="请选择"
+                                          :style="{ width: '50%' }"
+                                  >
+                                      <el-option
+                                              v-for="item in objectOptions"
+                                              :key="item.value"
+                                              :label="item.label"
+                                              :value="item.value"
+                                      >
+                                      </el-option>
+                                  </el-select>
+                              </el-form-item>
+                          </el-col>
+
+                          <el-col :span="8">
+                              <el-form-item label="数据源表名" label-width="100px">
+                                  <el-input size="mini" class="box1" :disabled="true" v-model="formData.biaoming"></el-input>
+                              </el-form-item>
+                          </el-col>
+                      </el-row>
+                      <el-row gutter="50">
+                          <el-col :span="10">
+                              <el-form-item label="数据提取SQL:" label-width="100px">
+                                  <el-input
+                                          disabled
+                                          type="textarea"
+                                          autosize
+                                          placeholder="请输入内容"
+                                          v-model="formData.sql">
+                                  </el-input>
+                              </el-form-item>
+                          </el-col>
+                      </el-row>
+                  </el-form>
+              </div>
+          </el-card>
+      </el-row>
+
+      <el-row style="margin-top: 20px">
       <el-card class="box-card-one">
         <div slot="header" class="clearfix">
           <span>训练处理数据</span>
@@ -351,7 +404,11 @@ export default {
         tongbuyuanze: "上限",
         jidu: "一年",
         baifen: "80",
-        shuzhirRangStartWeek: 1,
+          biaoming:"capacity_history_data_zj",
+          shuzhirRangStartWeek: 1,
+          kuming:"aiops_ns3_hive_db_new",
+          sql:"select obj_name,index_name,value,data_time from\n" +
+      " aiops_ns3_hive_db_new.capacity_history_data_zj where index_name ='HDFS存储'"
       },
       objectOptions: {},
       radio: "1",
@@ -372,6 +429,9 @@ export default {
 }
 .box-card-three{
   height: 130px;
+}
+.box-card-four{
+    height: 220px;
 }
 </style>
 

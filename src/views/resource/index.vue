@@ -63,6 +63,60 @@
     </el-row>
   </div>
 
+<!--    新增训练数据接入-->
+    <el-row style="margin-top: 20px">
+        <el-card class="box-card-four">
+            <div slot="header" class="clearfix">
+                <span>训练数据接入</span>
+            </div>
+            <div style="margin-bottom: 50px">
+                <el-form :model="formData" label-width="120px" size="medium">
+
+                    <el-row gutter="250">
+                        <el-col :span="10">
+                            <el-form-item label="数据源库名:" label-width="100px">
+                                <el-select
+                                        size="mini"
+                                        disabled
+                                        v-model="formData.kuming"
+                                        placeholder="请选择"
+                                        :style="{ width: '50%' }"
+                                >
+                                    <el-option
+                                            v-for="item in objectOptions"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value"
+                                    >
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+
+                        <el-col :span="8">
+                            <el-form-item label="数据源表名" label-width="100px">
+                                <el-input size="mini" class="box1" :disabled="true" v-model="formData.biaoming"></el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                    <el-row gutter="50">
+                        <el-col :span="10">
+                            <el-form-item label="数据提取SQL:" label-width="100px">
+                                <el-input
+                                        disabled
+                                        type="textarea"
+                                        autosize
+                                        placeholder="请输入内容"
+                                        v-model="formData.sql">
+                                </el-input>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+                </el-form>
+            </div>
+        </el-card>
+    </el-row>
+
 <!-- 卡片二 -->
 <div>
 <el-row>
@@ -91,7 +145,7 @@
                   </el-select>
                 </el-form-item>
               </el-col>
-             
+
               <el-col :span="10" style="margin-left: 300px">
                <el-form-item label="CPU使用率" label-width="100px">
                 <el-row :gutter="6">
@@ -120,7 +174,7 @@
                   </el-col></el-row>
                 </el-form-item>
               </el-col>
-         
+
               <el-col :span="10">
                 <el-form-item label="重复数据处理策略:" label-width="160px">
                   <div>
@@ -160,7 +214,7 @@
                 </el-form-item>
               </el-col>
             </el-row>
-          
+
           </el-form>
         </div>
       </el-card>
@@ -183,7 +237,7 @@
                   </el-input>
                 </el-form-item>
               </el-col>
-            
+
               <el-col :span="9">
                 <el-form-item label="资源回收的超限占比:" label-width="160px" placeholder="80">
                    <el-input class="box1" :disabled="true" placeholder="80">
@@ -228,7 +282,7 @@
                   </div>
                 </el-form-item>
               </el-col>
-            
+
               <el-col :span="10">
                 <el-form-item label="每周">
                     <el-row :gutter="6">
@@ -259,7 +313,7 @@
                 </el-form-item>
               </el-col>
             </el-row>
-           
+
           </el-form>
         </div>
       </el-card>
@@ -267,7 +321,7 @@
   </div>
 
   </div>
- 
+
 </template>
 
 <script>
@@ -275,7 +329,11 @@ export default {
   data() {
     return {
       input: "",
-      formData: {},
+      formData: {
+          biaoming:"os",
+          kuming:"zhyypt_hive_db",
+          sql:"select metric_name,ip,metric_value,gath_time from zhyypt_hive_db.os where metric_name in('CPU_util_pct','Memory_used_pct')"
+      },
       cities: [{
           value: '1',
           label: '0.5分钟'
@@ -314,35 +372,36 @@ export default {
 <style scoped>
     .box1{
          width: '50%';
-        
+
     }
     .box2{
-        width: '25%';  
+        width: '25%';
        float: left;
     }
+    .box-card-four{
+        border-width: 0px;
+        height: 220px;
+        margin-top: 10px;
 
+    }
      .box-card {
     border-width: 0px;
-    margin-bottom: 10px;
-    width: 1384px;
+         margin-top: 10px;
     height: 250px;
   }
    .box-card2 {
     border-width: 0px;
-    margin-bottom: 10px;
-    width: 1384px;
+       margin-top: 10px;
     height: 180px;
   }
-   .box-card3 {
+   .margin-top {
     border-width: 0px;
     margin-bottom: 10px;
-    width: 1384px;
     height: 180px;
   }
    .box-card4 {
     border-width: 0px;
-    margin-bottom: 10px;
-    width: 1384px;
+       margin-top: 10px;
     height: 150px;
   }
   .bg-purple {

@@ -1,7 +1,8 @@
 <template>
   <!--    存储资源优化-->
   <div class="app-container">
-    <el-row>
+
+      <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span>学件基础信息</span>
@@ -59,7 +60,59 @@
         </div>
       </el-card>
     </el-row>
-    <el-row style="margin-top: 20px">
+      <el-row style="margin-top: 20px">
+          <el-card class="box-card-four">
+              <div slot="header" class="clearfix">
+                  <span>训练数据接入</span>
+              </div>
+              <div style="margin-bottom: 50px">
+                  <el-form :model="formData" label-width="120px" size="medium">
+
+                      <el-row gutter="250">
+                          <el-col :span="10">
+                              <el-form-item label="数据源库名:" label-width="100px">
+                                  <el-select
+                                          size="mini"
+                                          disabled
+                                          v-model="formData.kuming"
+                                          placeholder="请选择"
+                                          :style="{ width: '50%' }"
+                                  >
+                                      <el-option
+                                              v-for="item in objectOptions"
+                                              :key="item.value"
+                                              :label="item.label"
+                                              :value="item.value"
+                                      >
+                                      </el-option>
+                                  </el-select>
+                              </el-form-item>
+                          </el-col>
+
+                          <el-col :span="8">
+                              <el-form-item label="数据源表名" label-width="100px">
+                                  <el-input size="mini" class="box1" :disabled="true" v-model="formData.biaoming"></el-input>
+                              </el-form-item>
+                          </el-col>
+                      </el-row>
+                      <el-row gutter="50">
+                          <el-col :span="10">
+                              <el-form-item label="数据提取SQL:" label-width="100px">
+                                  <el-input
+                                          disabled
+                                          type="textarea"
+                                          autosize
+                                          placeholder="请输入内容"
+                                          v-model="formData.sql">
+                                  </el-input>
+                              </el-form-item>
+                          </el-col>
+                      </el-row>
+                  </el-form>
+              </div>
+          </el-card>
+      </el-row>
+      <el-row style="margin-top: 20px">
       <el-card class="box-card-one">
         <div slot="header" class="clearfix">
           <span>训练处理数据</span>
@@ -152,7 +205,7 @@
       </el-card>
     </el-row>
 
-    <el-row style="margin-top: 20px">
+      <el-row style="margin-top: 20px">
       <el-card class="box-card-two">
         <div slot="header" class="clearfix">
           <span>模型训练规则</span>
@@ -245,8 +298,7 @@
       </el-card>
     </el-row>
 
-     <!-- 卡片四 -->
-
+<!--     模型训练调度-->
     <el-row style="margin-top: 20px">
             <el-card class="box-card-three">
                 
@@ -340,18 +392,23 @@ export default {
   data() {
     return {
       formData: {
-        objectValue: "虚拟机",
-        xuejianName: "虚拟机扩缩容",
-        shujulidu: "1天",
-        zhibiaoName: "虚机性能",
-        zhibiaodanwei: "",
-        shuzhirRangStart: "0",
-        shuzhirRangEnd: "100",
-        weikongshuju: "3位",
-        tongbuyuanze: "上限",
-        jidu: "1个季度",
-        baifen: "80",
-        shuzhirRangStartWeek: 1,
+          objectValue: "虚拟机",
+          xuejianName: "虚拟机扩缩容",
+          shujulidu: "1天",
+          zhibiaoName: "虚机性能",
+          zhibiaodanwei: "",
+          shuzhirRangStart: "0",
+          shuzhirRangEnd: "100",
+          weikongshuju: "3位",
+          tongbuyuanze: "上限",
+          jidu: "1个季度",
+          baifen: "80",
+          biaoming:"capacity_history_data_zj",
+          shuzhirRangStartWeek: 1,
+          kuming:"aiops_ns3_hive_db_new",
+          sql:"select obj_name,index_name,value,data_time from\n" +
+              "aiops_ns3_hive_db_new.capacity_history_data_zj where index_name in\n" +
+              "('cpu','memory')"
       },
       objectOptions: {},
       radio: "1",
@@ -372,6 +429,9 @@ export default {
 }
 .box-card-three{
   height: 130px;
+}
+.box-card-four{
+    height: 220px;
 }
 </style>
 
