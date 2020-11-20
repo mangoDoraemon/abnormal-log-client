@@ -1,8 +1,9 @@
 
 <template>
+ <div class="app-container">
 <div>
   <!-- 卡片一 -->
-  <div class="app-container">
+ 
     <el-row>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
@@ -61,11 +62,12 @@
         </div>
       </el-card>
     </el-row>
-  </div>
+</div>
 
 <!--    新增训练数据接入-->
-    <el-row style="margin-top: 20px">
-        <el-card class="box-card-four">
+<div>
+    <el-row >
+        <el-card class="box-card-4">
             <div slot="header" class="clearfix">
                 <span>训练数据接入</span>
             </div>
@@ -116,7 +118,7 @@
             </div>
         </el-card>
     </el-row>
-
+</div>
 <!-- 卡片二 -->
 <div>
 <el-row>
@@ -381,27 +383,32 @@ export default {
     .box-card-four{
         border-width: 0px;
         height: 220px;
-        margin-top: 10px;
+        margin-top: 20px;
 
     }
      .box-card {
     border-width: 0px;
-         margin-top: 10px;
+    margin-top: 20px;
     height: 250px;
   }
    .box-card2 {
     border-width: 0px;
-       margin-top: 10px;
+       margin-top: 20px;
     height: 180px;
   }
-   .margin-top {
+  .box-card-4{
+  border-width: 0px;
+    margin-top: 20px;
+    height: 250px;
+  }
+   .box-card3 {
     border-width: 0px;
-    margin-bottom: 10px;
+   margin-top: 20px;
     height: 180px;
   }
    .box-card4 {
     border-width: 0px;
-       margin-top: 10px;
+    margin-top: 20px;
     height: 150px;
   }
   .bg-purple {
@@ -412,10 +419,5 @@ export default {
   }
   .grid-content {
     width: 100px;
-  }
-  .box5{
-    position: relative;
-    left: 280px;
-     top: -2px;
   }
 </style>
