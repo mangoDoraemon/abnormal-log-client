@@ -277,8 +277,8 @@
               <el-col :span="10">
                 <el-form-item label="执行周期:" label-width="100px">
                   <div>
-                   <el-radio v-model="radio" label="1" :disabled="true">小时</el-radio>
-                  <el-radio v-model="radio" label="2" :disabled="true">日</el-radio>
+                   <el-radio v-model="radio" label="2" :disabled="true">小时</el-radio>
+                  <el-radio v-model="radio" label="1" :disabled="true">日</el-radio>
                   <el-radio v-model="radio" label="3" :disabled="true">周</el-radio>
                   <el-radio v-model="radio" label="4" :disabled="true">月</el-radio>
                   </div>
@@ -286,23 +286,23 @@
               </el-col>
 
               <el-col :span="10">
-                <el-form-item label="每周">
+                <el-form-item label="每天">
                     <el-row :gutter="6">
                   <el-col span="6">
-                    <el-select v-model="value"  placeholder="周一" :disabled="true"  :style="{ width: '100%' }">
-                      <el-option
-                      placeholder="CPU配额"
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                      </el-option>
-                    </el-select>
+<!--                    <el-select v-model="value"  placeholder="周一" :disabled="true"  :style="{ width: '100%' }">-->
+<!--                      <el-option-->
+<!--                      placeholder="CPU配额"-->
+<!--                        v-for="item in options"-->
+<!--                        :key="item.value"-->
+<!--                        :label="item.label"-->
+<!--                        :value="item.value">-->
+<!--                      </el-option>-->
+<!--                    </el-select>-->
                   </el-col>
                   <el-col class="line" :span="3">    </el-col>
                   <el-col span="6">
                     <el-input
-                    placeholder="02:30"
+                    placeholder="05:00"
                     suffix-icon="el-icon-date"
                       disabled
                       style="

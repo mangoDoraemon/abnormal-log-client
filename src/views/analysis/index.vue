@@ -232,7 +232,7 @@
                  
                   <el-col span="6">
                     <el-input
-                    placeholder="01:00"
+                    placeholder="07:00"
                     suffix-icon="el-icon-date"
                       disabled
                       style="

@@ -304,29 +304,29 @@
               <el-col :span="10">
                 <el-form-item label="执行周期">
                      <el-radio disabled v-model="radio2" label="1">小时</el-radio>
-                  <el-radio disabled v-model="radio2" label="2">日</el-radio>
-                  <el-radio disabled v-model="radio2" label="3">周</el-radio>
+                  <el-radio disabled v-model="radio2" label="3">日</el-radio>
+                  <el-radio disabled v-model="radio2" label="2">周</el-radio>
                   <el-radio disabled v-model="radio2" label="4">月</el-radio>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
-                <el-form-item label="每周">
+                <el-form-item label="每天">
                     <el-row :gutter="10">
                   <el-col span="6">
-                       <el-select
-                    disabled
-                    v-model="formData.week"
-                    placeholder="周一"
-                    :style="{ width: '100%' }"
-                  >
-                    <el-option
-                      v-for="item in objectOptions"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    >
-                    </el-option>
-                  </el-select>
+<!--                       <el-select-->
+<!--                    disabled-->
+<!--                    v-model="formData.week"-->
+<!--                    placeholder=""-->
+<!--                    :style="{ width: '100%' }"-->
+<!--                  >-->
+<!--                    <el-option-->
+<!--                      v-for="item in objectOptions"-->
+<!--                      :key="item.value"-->
+<!--                      :label="item.label"-->
+<!--                      :value="item.value"-->
+<!--                    >-->
+<!--                    </el-option>-->
+<!--                  </el-select>-->
                   </el-col>
                   <el-col class="line" :span="1">    </el-col>
                   <el-col span="7">
@@ -366,7 +366,7 @@ export default {
         shuzhirRangEnd:'100',
         weikongshuju:'取前临近数据',
         tongbuyuanze:'取近一步同步结果',
-        time:'01:10',
+        time:'07:00',
         week:'周一',
         biaoming:"os",
         kuming:"zhyypt_hive_db",

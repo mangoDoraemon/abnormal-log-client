@@ -356,7 +356,7 @@
                                       <el-col span="10">
                                           <el-input
                         suffix-icon="el-icon-date"
-                        placeholder="01:00"
+                        placeholder="07:00"
                         disabled
                         size="mini"
                         style="
