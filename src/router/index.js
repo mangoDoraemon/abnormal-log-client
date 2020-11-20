@@ -45,6 +45,11 @@ let router =  new Router({
             name :'index',
             component: () => import('@/views/analysis/index'),
         },
+        {
+            path:'/robots',
+            name :'index',
+            component: () => import('@/views/robots/index'),
+        },
         // 知识库
         {
             path:'/knowledge',
