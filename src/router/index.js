@@ -15,9 +15,9 @@ let router =  new Router({
             component: () => import('@/views/abnormalLog/index'),
         },
         {
-            path:'/test',
-            name :'1',
-            component: () => import('@/views/test/1'),
+            path:'/virtualMachine',
+            name :'index',
+            component: () => import('@/views/virtualMachine/index'),
         }
 
         ]
